@@ -73,6 +73,7 @@ export class LoginComponent {
             this.loading.set(false);
             this.authtService.setCambiarRol = response.tipo_rol;
             const responses: tokenJwt = response;
+            localStorage.removeItem('tokenSys');
             localStorage.setItem('tokenSys', JSON.stringify(responses));
 
             this.authtService.isAuthenticated = true;

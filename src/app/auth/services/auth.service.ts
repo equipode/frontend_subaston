@@ -5,6 +5,7 @@ import { Observable, catchError, throwError } from "rxjs";
 import { environment } from "../../../environments/environment";
 import { Auth } from "../interfaces/auth.interface";
 import { tokenJwt } from "../interfaces/jsonTokenJwt.interface";
+import { CreateUser, ResponseCreateUser } from "../interfaces/user.interface";
 
 interface User {
   role: number | any;
@@ -26,6 +27,10 @@ export class AuthService {
       .pipe(
         catchError(this.handleError)
       );
+  }
+
+  crearUser(data: CreateUser): Observable<ResponseCreateUser> {
+    return this.http.post<ResponseCreateUser>(`${this.baseUrl}/api/v1/auth/crearUser`, data);
   }
 
   set setCambiarRol(tipo: User) {

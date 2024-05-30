@@ -1,4 +1,4 @@
 export interface Auth {
-  email: string;
-  password: string | number;
+  usuario: string;
+  contrasenia: string | number;
 }

@@ -7,9 +7,9 @@
         <div class="text-center mb-5">
           <img [src]="urlLogoEmpresa" alt="Image" height="50" class="mb-3"><br>
           <div class="text-900 text-xl font-medium mb-3">
-            <!-- @if (loading()) { -->
-            <!-- <h1><i class="pi pi-spin pi-sync" style="font-size: 2rem"></i>Cargando</h1> -->
-            <!-- }@else if (!loading()) { -->
+            @if (loading()) {
+            <h1><i class="pi pi-spin pi-sync" style="font-size: 2rem"></i> {{messageLoading()}}</h1>
+            }@else if (!loading()) {
 
             <h2>SUBASTÓN</h2>
             <p>
@@ -17,36 +17,37 @@
               de los beneficios en subastas
               linea.
             </p>
-            <!-- } -->
-
-            <!-- @if (errorMessageBolean()) {
-            <span><b style="color: red;">{{ errorMessage() }}</b></span><br><br>
-            } -->
+            }
 
           </div>
 
         </div>
 
         <div>
-          <form autocomplete="off">
+          <form [formGroup]="myForm" autocomplete="off">
 
             <label for="nik" class="block text-900 text-xl font-medium mb-2">Nik ¿Como te haras llamar?</label>
-            <input id="nik" type="text" pInputText class="w-full md:w-30rem mb-3" style="padding:1rem"><br>
+            <input id="nik" type="text" formControlName="nit" pInputText class="w-full md:w-30rem mb-3"
+              style="padding:1rem"><br>
+            @if (isValidField('nit')) {
+            <b style="color: red;">{{ getFieldError('nit') }}</b>
+            }
 
             <label for="email1" class="block text-900 text-xl font-medium mb-2">Usuario</label>
-            <input id="email1" type="text" pInputText class="w-full md:w-30rem mb-3" style="padding:1rem"><br>
-            <!-- @if (isValidField('usuario')) {
+            <input id="email1" type="text" formControlName="usuario" pInputText class="w-full md:w-30rem mb-3"
+              style="padding:1rem"><br>
+            @if (isValidField('usuario')) {
             <b style="color: red;">{{ getFieldError('usuario') }}</b>
-            } -->
+            }
 
 
 
             <label for="password1" class="block text-900 font-medium text-xl mb-2">Contraseña</label>
-            <p-password id="password1" [toggleMask]="true" styleClass="mb-3"
+            <p-password id="password1" [toggleMask]="true" styleClass="mb-3" formControlName="contrasenia"
               inputStyleClass="w-full p-3 md:w-30rem"></p-password><br>
-            <!-- @if (isValidField('contrasenia')) {
-            <b style="color: red;">Este campo es requerido</b>
-            } -->
+            @if (isValidField('contrasenia')) {
+            <b style="color: red;">Este campo es requerido</b> <br>
+            }
 
             <div class="flex space-x-12">
               <button (click)="crearCuenta()" pButton pRipple label="Crear Cuenta" class="btn ml-2"></button>
