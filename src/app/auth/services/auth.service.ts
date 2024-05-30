@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { Router } from "@angular/router";
 import { Observable, catchError, throwError } from "rxjs";
 import { environment } from "../../../environments/environment";
@@ -18,7 +18,8 @@ export class AuthService {
   public isAuthenticated: boolean = false;
   private baseUrl = environment.url_backend;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  private http = inject(HttpClient);
+  private router = inject(Router);
 
   login(credents: Auth): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/api/v1/auth/login`, credents)

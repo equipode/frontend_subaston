@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ValidatorsService } from '../../../services/validators.service';
+import { isTokenExpired } from '../../guards/tokenExpiration.guard';
 import { tokenJwt } from '../../interfaces/jsonTokenJwt.interface';
 import { AuthService } from '../../services/auth.service';
 
@@ -45,7 +46,16 @@ export class LoginComponent {
 
 
   ngOnInit(): void {
+    if (navigator.onLine) {
+      const token = this.authtService.getToken;
 
+      if (token) {
+        const result = isTokenExpired(token.Token);
+        if (!result) {
+          this.router.navigate(['./home']);
+        }
+      }
+    }
 
   }
 
@@ -66,7 +76,7 @@ export class LoginComponent {
             localStorage.setItem('tokenSys', JSON.stringify(responses));
 
             this.authtService.isAuthenticated = true;
-            this.router.navigate(['./public']);
+            this.router.navigate(['./home']);
 
           },
           error: (err) => {
@@ -78,9 +88,6 @@ export class LoginComponent {
       } else {
         this.errorMessageBolean.set(true);
         this.errorMessage.set('No tienes Conexion a internet?');
-        setTimeout(() => {
-          this.router.navigate(['./offline']);
-        }, 100);
       }
 
     }

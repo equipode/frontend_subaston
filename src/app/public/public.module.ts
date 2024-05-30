@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { PrimengModule } from '../primeng/primeng.module';
 import { PrincipalComponent } from './pages/principal/principal.component';
 import { PublicRoutingModule } from './public-routing.module';
 
@@ -11,7 +12,8 @@ import { PublicRoutingModule } from './public-routing.module';
   ],
   imports: [
     CommonModule,
-    PublicRoutingModule
+    PublicRoutingModule,
+    PrimengModule
   ]
 })
 export class PublicModule { }
