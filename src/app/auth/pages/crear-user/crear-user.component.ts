@@ -48,7 +48,7 @@ export class CrearUserComponent {
       usuario: user,
       contrasenia: contrasenia
     }
-    console.log(credents);
+
     this.authService.login(credents).subscribe({
       next: (response) => {
         this.loading.set(false);
@@ -79,7 +79,7 @@ export class CrearUserComponent {
           this.loading.set(false);
           Swal.fire({
             position: 'center',
-            icon: 'info',
+            icon: 'success',
             title: `${response.message}`,
             showConfirmButton: false,
             timer: 800
@@ -90,6 +90,15 @@ export class CrearUserComponent {
         },
         error: (err) => {
           this.loading.set(false);
+          if (err.status === 400) {
+            Swal.fire({
+              position: 'center',
+              icon: 'info',
+              title: `${err.error.message}`,
+              showConfirmButton: false,
+              timer: 1000
+            });
+          }
 
         }
       })
