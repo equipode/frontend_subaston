@@ -93,6 +93,10 @@ export class LoginComponent {
     }
   }
 
+  crearCuenta() {
+    this.router.navigate(['./login/createUser']);
+  }
+
   ngOnDestroy() {
     if (this.loginSubscription) {
 

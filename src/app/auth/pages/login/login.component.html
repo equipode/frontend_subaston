@@ -10,8 +10,8 @@
             @if (loading()) {
             <h1><i class="pi pi-spin pi-sync" style="font-size: 2rem"></i>Cargando</h1>
             }@else if (!loading()) {
-            <!-- <h1>Iniciar Sesión<a class="iconoPruebas pi pi-wrench" href="#"></a></h1> -->
-            <h1>Iniciar Sesión</h1>
+
+            <h2>SUBASTÓN</h2>
             }
 
             @if (errorMessageBolean()) {
@@ -39,7 +39,11 @@
             <b style="color: red;">Este campo es requerido</b>
             }
 
-            <button (click)="login()" pButton pRipple label="Iniciar Sesión" class="w-full p-2 text-xl"></button>
+            <div class="flex space-x-12">
+              <button (click)="login()" pButton pRipple label="Iniciar Sesión" class="btn ml-2"></button>
+              <button (click)="crearCuenta()" pButton pRipple label="Crear Cuenta" class="btn ml-8"></button>
+            </div>
+
           </form>
         </div>
       </div>

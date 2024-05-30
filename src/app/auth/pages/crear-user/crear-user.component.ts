@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crear-user',
@@ -7,4 +8,16 @@ import { Component } from '@angular/core';
 })
 export class CrearUserComponent {
 
+  private router = inject(Router);
+
+  public urlLogoEmpresa = 'assets/icons/logo.jpg';
+
+
+  crearCuenta() {
+
+  }
+
+  login() {
+    this.router.navigate(['./login']);
+  }
 }
