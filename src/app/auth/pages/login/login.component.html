@@ -1,0 +1,48 @@
+<div class="flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden">
+
+  <div class="flex flex-column align-items-center justify-content-center">
+    <div
+      style="border-radius:56px; padding:0.3rem; background: linear-gradient(180deg, var(--primary-color) 10%, rgba(33, 150, 243, 0) 30%);">
+      <div class="w-full surface-card py-8 px-5 sm:px-8" style="border-radius:53px">
+        <div class="text-center mb-5">
+          <img [src]="urlLogoEmpresa" alt="Image" height="50" class="mb-3"><br>
+          <div class="text-900 text-xl font-medium mb-3">
+            @if (loading()) {
+            <h1><i class="pi pi-spin pi-sync" style="font-size: 2rem"></i>Cargando</h1>
+            }@else if (!loading()) {
+            <!-- <h1>Iniciar Sesión<a class="iconoPruebas pi pi-wrench" href="#"></a></h1> -->
+            <h1>Iniciar Sesión</h1>
+            }
+
+            @if (errorMessageBolean()) {
+            <span><b style="color: red;">{{ errorMessage() }}</b></span><br><br>
+            }
+
+          </div>
+
+        </div>
+
+        <div>
+          <form [formGroup]="myForm" autocomplete="off">
+            <label for="email1" class="block text-900 text-xl font-medium mb-2">Usuario</label>
+            <input id="email1" type="text" formControlName="usuario" pInputText class="w-full md:w-30rem mb-3"
+              style="padding:1rem"><br>
+            @if (isValidField('usuario')) {
+            <b style="color: red;">{{ getFieldError('usuario') }}</b>
+            }
+
+
+            <label for="password1" class="block text-900 font-medium text-xl mb-2">Contraseña</label>
+            <p-password id="password1" formControlName="contrasenia" [toggleMask]="true" styleClass="mb-3"
+              inputStyleClass="w-full p-3 md:w-30rem"></p-password><br>
+            @if (isValidField('contrasenia')) {
+            <b style="color: red;">Este campo es requerido</b>
+            }
+
+            <button (click)="login()" pButton pRipple label="Iniciar Sesión" class="w-full p-2 text-xl"></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
