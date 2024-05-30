@@ -1,2 +1,46 @@
-<p>principal works!</p><br>
-<p-button label="Cerrar Sesión" (onClick)="logaut()"></p-button>
+<br>
+<h2 style="text-align: center; text-wrap: balance;">Hola {{token.user.nick}} estas en el Subastón <br>
+  donde puedes vender y comprar en tiempo real</h2>
+
+<br><br>
+
+<div class="grid">
+
+  <div class="col-4 md:col-4 lg:col-4">
+    <p-button label="Subastas En Linea"></p-button>
+  </div>
+  <div class="col-4 md:col-4 lg:col-4">
+    <p-button label="Subastas En Espera"></p-button>
+  </div>
+  <div class="col-4 md:col-4 lg:col-4">
+    <br>
+    <b>30 Usuarios en linea</b>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="col-8 md:col-8 lg:col-8">
+    <p-table [value]="productosSubastas" [tableStyle]="{ 'min-width': '20rem' }" [scrollable]="true"
+      scrollHeight="250px">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>PERSONA</th>
+          <th>PRODUCTO</th>
+          <th>FOTO</th>
+          <th>PRECIO BASE</th>
+          <th>INICIA EN</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-productVender>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  <div class="col-2 md:col-2 lg:col-2"></div>
+</div>

@@ -8,6 +8,7 @@ import { PrincipalComponent } from "./pages/principal/principal.component";
 const routes: Routes = [
   {
     path: '',
+    loadComponent: () => import('../components/menu/menu.component'),
     children: [
       { path: 'principal', title: 'Principal', component: PrincipalComponent },
       { path: '**', redirectTo: 'principal' }

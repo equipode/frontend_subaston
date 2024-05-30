@@ -1,0 +1,5 @@
+<img (click)="openModal()" src="assets/imgs/user.png" height="60" class="mr-2" />
+
+<p-dialog [(visible)]="modalLougt" [position]="'topright'" [style]="{width: '330px'}" [header]="token.user.nick">
+  <p-button (onClick)="logout()" icon="pi pi-sign-out" label="Cerrar Sesión"></p-button>
+</p-dialog>

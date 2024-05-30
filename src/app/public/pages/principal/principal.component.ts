@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { tokenJwt } from '../../../auth/interfaces/jsonTokenJwt.interface';
 import { AuthService } from '../../../auth/services/auth.service';
 
 @Component({
@@ -9,9 +10,9 @@ import { AuthService } from '../../../auth/services/auth.service';
 export class PrincipalComponent {
 
   private authService = inject(AuthService);
+  public token: tokenJwt = this.authService.getToken;
 
-  logaut() {
-    this.authService.logout();
-  }
+  public productosSubastas = [];
+
 
 }
