@@ -7,10 +7,11 @@
 <div class="grid">
 
   <div class="col-4 md:col-4 lg:col-4">
-    <p-button label="Subastas En Linea"></p-button>
+    <p-button label="Subastas En Espera"></p-button>
+
   </div>
   <div class="col-4 md:col-4 lg:col-4">
-    <p-button label="Subastas En Espera"></p-button>
+    <p-button label="Subastas En Linea"></p-button>
   </div>
   <div class="col-4 md:col-4 lg:col-4">
     <br>
@@ -21,7 +22,7 @@
 <div class="grid">
   <div class="col-8 md:col-8 lg:col-8">
     <p-table [value]="productosSubastas" [tableStyle]="{ 'min-width': '20rem' }" [scrollable]="true"
-      scrollHeight="250px">
+      scrollHeight="450px">
       <ng-template pTemplate="header">
         <tr>
           <th>PERSONA</th>
@@ -32,6 +33,7 @@
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-productSubastar>
+        @if((productSubastar.fecha_subasta | countdown:productSubastar.hora_subasta) !== '0'){
         <tr>
           <td>{{ productSubastar.nit | uppercase }}</td>
           <td>{{ productSubastar.nombre_product | uppercase }}</td>
@@ -39,13 +41,12 @@
               height="40px" margin-left="10px" border-radius="50%" [preview]="true"></p-image></td>
           <td>${{ productSubastar.precio_base | number : "1.0-0" }}</td>
           <td>
-            @if((productSubastar.fecha_subasta | countdown:productSubastar.hora_subasta) !== '0'){
+
             {{ productSubastar.fecha_subasta | countdown:productSubastar.hora_subasta }}
-            }@else {
-            <p-button label="Entrar"></p-button>
-            }
+
           </td>
         </tr>
+        }
       </ng-template>
     </p-table>
   </div>
