@@ -7,11 +7,11 @@
 <div class="grid">
 
   <div class="col-4 md:col-4 lg:col-4">
-    <p-button label="Subastas En Espera"></p-button>
+    <p-button label="Subastas En Espera" (onClick)="mostrarSubastasEnEsperas()"></p-button>
 
   </div>
   <div class="col-4 md:col-4 lg:col-4">
-    <p-button label="Subastas En Linea"></p-button>
+    <p-button label="Subastas En Linea" (onClick)="mostrarSubastasEnLinea()"></p-button>
   </div>
   <div class="col-4 md:col-4 lg:col-4">
     <br>
@@ -21,34 +21,12 @@
 
 <div class="grid">
   <div class="col-8 md:col-8 lg:col-8">
-    <p-table [value]="productosSubastas" [tableStyle]="{ 'min-width': '20rem' }" [scrollable]="true"
-      scrollHeight="450px">
-      <ng-template pTemplate="header">
-        <tr>
-          <th>PERSONA</th>
-          <th>PRODUCTO</th>
-          <th>FOTO</th>
-          <th>PRECIO BASE</th>
-          <th>INICIA EN</th>
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-productSubastar>
-        @if((productSubastar.fecha_subasta | countdown:productSubastar.hora_subasta) !== '0'){
-        <tr>
-          <td>{{ productSubastar.nit | uppercase }}</td>
-          <td>{{ productSubastar.nombre_product | uppercase }}</td>
-          <td><p-image loading="lazy" src="assets/imgs/producto.jpeg" alt="Imagen del producto" width="40px"
-              height="40px" margin-left="10px" border-radius="50%" [preview]="true"></p-image></td>
-          <td>${{ productSubastar.precio_base | number : "1.0-0" }}</td>
-          <td>
-
-            {{ productSubastar.fecha_subasta | countdown:productSubastar.hora_subasta }}
-
-          </td>
-        </tr>
-        }
-      </ng-template>
-    </p-table>
+    @if(mostrarSubastasEnEspera()){
+    <app-subastas-en-espera [subastasEnEspera]="productosSubastas"></app-subastas-en-espera>
+    }
+    @if(mostrarSubastasLinea()){
+    <app-subastas-en-linea [subastasEnLinea]="productosSubastas"></app-subastas-en-linea>
+    }
   </div>
   <div class="col-2 md:col-2 lg:col-2"></div>
 </div>

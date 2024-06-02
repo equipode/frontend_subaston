@@ -1,0 +1,27 @@
+<p-table [value]="subastasEnEspera" [tableStyle]="{ 'min-width': '20rem' }" [scrollable]="true" scrollHeight="450px">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>PERSONA</th>
+      <th>PRODUCTO</th>
+      <th>FOTO</th>
+      <th>PRECIO BASE</th>
+      <th>INICIA EN</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-productSubastar>
+    @if((productSubastar.fecha_subasta | countdown:productSubastar.hora_subasta) !== '0'){
+    <tr>
+      <td>{{ productSubastar.nit | uppercase }}</td>
+      <td>{{ productSubastar.nombre_product | uppercase }}</td>
+      <td><p-image loading="lazy" src="assets/imgs/producto.jpeg" alt="Imagen del producto" width="40px" height="40px"
+          margin-left="10px" border-radius="50%" [preview]="true"></p-image></td>
+      <td>${{ productSubastar.precio_base | number : "1.0-0" }}</td>
+      <td>
+
+        {{ productSubastar.fecha_subasta | countdown:productSubastar.hora_subasta }}
+
+      </td>
+    </tr>
+    }
+  </ng-template>
+</p-table>
