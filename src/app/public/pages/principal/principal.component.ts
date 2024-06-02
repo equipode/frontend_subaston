@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit, inject, signal } from '@angular/core';
 import { tokenJwt } from '../../../auth/interfaces/jsonTokenJwt.interface';
 import { AuthService } from '../../../auth/services/auth.service';
 import { Producto, ResponseProduct } from '../../interfaces/producto.interface';
+import { ResponseUsersLineaSubasta } from '../../interfaces/subasta.interface';
 import { ProductoService } from '../../services/producto.service';
 import { SubastaService } from '../../services/subasta.service';
 
@@ -19,7 +20,7 @@ export class PrincipalComponent implements OnInit, OnDestroy {
   public token: tokenJwt = this.authService.getToken;
 
   public productosSubastas: Producto[] = [];
-  public usuariosEnLinea: number = 0;
+  public usuariosEnLinea = signal<number>(0);
 
   private intervalId: any;
 
@@ -46,9 +47,9 @@ export class PrincipalComponent implements OnInit, OnDestroy {
 
   totalUsuariosLinea() {
     this.subastaService.totalUsuariosEnLinea().subscribe({
-      next: (resp: any) => {
+      next: (resp: ResponseUsersLineaSubasta) => {
 
-        this.usuariosEnLinea = resp.message;
+        this.usuariosEnLinea.set(resp.message);
 
       },
       error: (err) => {

@@ -5,6 +5,7 @@ import { SubastasEnEsperaComponent } from './components/subastas-en-espera/subas
 import { SubastasEnLineaComponent } from './components/subastas-en-linea/subastas-en-linea.component';
 import { PrincipalComponent } from './pages/principal/principal.component';
 import { CountdownPipe } from './pipes/countdown.pipe';
+import { UsersLineaPipe } from './pipes/users-linea.pipe';
 import { PublicRoutingModule } from './public-routing.module';
 
 
@@ -13,6 +14,7 @@ import { PublicRoutingModule } from './public-routing.module';
   declarations: [
     PrincipalComponent,
     CountdownPipe,
+    UsersLineaPipe,
     SubastasEnEsperaComponent,
     SubastasEnLineaComponent
   ],

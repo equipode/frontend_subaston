@@ -5,22 +5,24 @@
 <br><br>
 
 <div class="grid">
-
-  <div class="col-4 md:col-4 lg:col-4">
+  <div class="md:col-2 lg:col-2"></div>
+  <div class="col-12 md:col-2 lg:col-2">
+    <b>{{ usuariosEnLinea() | usersLinea }}</b>
+  </div>
+  <div class="col-6 md:col-3 lg:col-3">
     <p-button label="Subastas En Espera" (onClick)="mostrarSubastasEnEsperas()"></p-button>
 
   </div>
-  <div class="col-4 md:col-4 lg:col-4">
+  <div class="col-6 md:col-3 lg:col-3">
     <p-button label="Subastas En Linea" (onClick)="mostrarSubastasEnLinea()"></p-button>
   </div>
-  <div class="col-4 md:col-4 lg:col-4">
-    <br>
-    <b>{{ usuariosEnLinea }} Usuarios en linea</b>
-  </div>
+
+
 </div>
 
 <div class="grid">
-  <div class="col-8 md:col-8 lg:col-8">
+  <div class="md:col-2 lg:col-2"></div>
+  <div class="col-12 md:col-8 lg:col-8">
     @if(mostrarSubastasEnEspera()){
     <app-subastas-en-espera [subastasEnEspera]="productosSubastas"></app-subastas-en-espera>
     }
@@ -28,5 +30,5 @@
     <app-subastas-en-linea [subastasEnLinea]="productosSubastas"></app-subastas-en-linea>
     }
   </div>
-  <div class="col-2 md:col-2 lg:col-2"></div>
+
 </div>

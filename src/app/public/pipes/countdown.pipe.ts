@@ -33,7 +33,11 @@ export class CountdownPipe implements PipeTransform {
     if (days === 0) {
       mensaje = `${this.pad(hours)}:${this.pad(minutes)}:${this.pad(seconds)}`;
     } else {
-      mensaje = `${this.pad(days)} Dias ${this.pad(hours)}:${this.pad(minutes)}:${this.pad(seconds)}`;
+      if (days === 1) {
+        mensaje = `${days} Dia ${this.pad(hours)}:${this.pad(minutes)}:${this.pad(seconds)}`;
+      } else {
+        mensaje = `${this.pad(days)} Dias ${this.pad(hours)}:${this.pad(minutes)}:${this.pad(seconds)}`;
+      }
     }
 
     return mensaje;
