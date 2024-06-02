@@ -3,6 +3,7 @@ import { tokenJwt } from '../../../auth/interfaces/jsonTokenJwt.interface';
 import { AuthService } from '../../../auth/services/auth.service';
 import { Producto, ResponseProduct } from '../../interfaces/producto.interface';
 import { ProductoService } from '../../services/producto.service';
+import { SubastaService } from '../../services/subasta.service';
 
 @Component({
   selector: 'app-principal',
@@ -13,9 +14,12 @@ export class PrincipalComponent implements OnInit, OnDestroy {
 
   private authService = inject(AuthService);
   private productoService = inject(ProductoService);
+  private subastaService = inject(SubastaService);
+
   public token: tokenJwt = this.authService.getToken;
 
   public productosSubastas: Producto[] = [];
+  public usuariosEnLinea: number = 0;
 
   private intervalId: any;
 
@@ -24,6 +28,7 @@ export class PrincipalComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.listadoProductos();
+    this.totalUsuariosLinea();
   }
 
   listadoProductos() {
@@ -32,6 +37,19 @@ export class PrincipalComponent implements OnInit, OnDestroy {
 
         this.productosSubastas = resp.message;
         this.startCountdown();
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+  }
+
+  totalUsuariosLinea() {
+    this.subastaService.totalUsuariosEnLinea().subscribe({
+      next: (resp: any) => {
+
+        this.usuariosEnLinea = resp.message;
+
       },
       error: (err) => {
         console.log(err);
