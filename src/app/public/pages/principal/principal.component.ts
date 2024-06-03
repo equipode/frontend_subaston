@@ -4,6 +4,7 @@ import { AuthService } from '../../../auth/services/auth.service';
 import { Producto, ResponseProduct } from '../../interfaces/producto.interface';
 import { ResponseUsersLineaSubasta } from '../../interfaces/subasta.interface';
 import { ProductoService } from '../../services/producto.service';
+import { SocketService } from '../../services/socket.service';
 import { SubastaService } from '../../services/subasta.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class PrincipalComponent implements OnInit, OnDestroy {
   private authService = inject(AuthService);
   private productoService = inject(ProductoService);
   private subastaService = inject(SubastaService);
+  private socketService = inject(SocketService);
 
   public token: tokenJwt = this.authService.getToken;
 
@@ -30,12 +32,16 @@ export class PrincipalComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.listadoProductos();
     this.totalUsuariosLinea();
+    this.socketService.on('nuevo_producto').subscribe((producto) => {
+      console.log(producto);
+      this.listadoProductos();
+    });
   }
 
   listadoProductos() {
+    this.productosSubastas = [];
     this.productoService.listProductos().subscribe({
       next: (resp: ResponseProduct) => {
-
         this.productosSubastas = resp.message;
         this.startCountdown();
       },

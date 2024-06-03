@@ -22,7 +22,7 @@ export default class MenuComponent implements OnInit {
   public token: tokenJwt = this.authservice.getToken;
 
   ngOnInit(): void {
-    console.log(this.token);
+    // console.log(this.token);
     this.items.set([
       {
         label: 'Principal',

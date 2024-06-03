@@ -11,7 +11,7 @@ export class CountdownPipe implements PipeTransform {
     const date = new Date(isoString);
     const dateOnly = date.toISOString().split('T')[0];
 
-    console.log(dateOnly);
+    // console.log(dateOnly);
 
     const targetDateTime = new Date(`${dateOnly}T${time}`);
     const now = new Date().getTime();
