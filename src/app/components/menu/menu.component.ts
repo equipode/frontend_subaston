@@ -33,8 +33,8 @@ export default class MenuComponent implements OnInit {
       {
         label: 'Subastar Producto',
         icon: 'pi pi-box',
-        // command: () =>
-        //   this.router.navigate(['./admind/create_product'])
+        command: () =>
+          this.router.navigate(['./home/subastar_producto'])
       },
       {
         label: 'Mensajes',
