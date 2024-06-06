@@ -37,7 +37,7 @@ export class FormCrearProductoComponent implements OnInit {
     nombre_product: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(48)]],
     precio_base: ['', [Validators.required]],
     antiguedad: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(28)]],
-    imagen: ['assets/imgs/producto.jpeg', [Validators.required, Validators.minLength(3), Validators.maxLength(248)]],
+    imagen: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(248)]],
     descripcion: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(158)]],
     cantidad: ['', [Validators.required]],
     estado_mostrador: ['', [Validators.required]],
@@ -72,6 +72,7 @@ export class FormCrearProductoComponent implements OnInit {
     this.myFormProduct.controls['fecha_subasta'].setValue(fecha);
     this.myFormProduct.controls['hora_subasta'].setValue(this.horaActual);
     this.myFormProduct.controls['fk_user'].setValue(this.token.user.id);
+    this.myFormProduct.controls['imagen'].setValue('assets/imgs/producto.jpeg');
   }
 
   listadoCategorias() {
@@ -103,6 +104,19 @@ export class FormCrearProductoComponent implements OnInit {
       this.myFormProduct.markAllAsTouched();
     } else {
       this.onFormProduct.emit(this.myFormProduct.value);
+      this.myFormProduct.controls['nombre_product'].setValue('');
+      this.myFormProduct.controls['precio_base'].setValue('');
+      this.myFormProduct.controls['antiguedad'].setValue('');
+      this.myFormProduct.controls['imagen'].setValue('');
+      this.myFormProduct.controls['descripcion'].setValue('');
+      this.myFormProduct.controls['cantidad'].setValue('');
+      this.myFormProduct.controls['estado_mostrador'].setValue('');
+      this.myFormProduct.controls['fecha_subasta'].setValue(this.dateMax);
+      this.myFormProduct.controls['hora_subasta'].setValue(this.horaActual);
+      this.myFormProduct.controls['fk_categoria'].setValue('');
+      this.myFormProduct.controls['fk_rango_precio'].setValue('');
+      this.myFormProduct.controls['fk_ubicacion'].setValue('');
+      this.myFormProduct.controls['imagen'].setValue('assets/imgs/producto.jpeg');
     }
   }
 

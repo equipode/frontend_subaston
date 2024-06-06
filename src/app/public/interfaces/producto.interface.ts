@@ -29,3 +29,9 @@ export interface CreateProducto {
   fk_ubicacion: number
 }
 
+export interface ResponseCreateProduct {
+  status: string;
+  message: string;
+  data: any;
+}
+
