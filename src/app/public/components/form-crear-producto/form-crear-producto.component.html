@@ -28,6 +28,9 @@
       <div class="select-container">
         <select formControlName="fk_categoria" class="custom-select" name="" id="categor">
           <option value="">Seleccione</option>
+          @for (categoria of categorias; track categoria.pk_categor) {
+          <option value="{{categoria.pk_categor}}">{{categoria.nombre_categor}}</option>
+          }
         </select>
       </div>
       @if (isValidField('fk_categoria')) {
@@ -39,6 +42,9 @@
       <div class="select-container">
         <select formControlName="fk_rango_precio" class="custom-select" name="" id="rango_prec">
           <option value="">Seleccione</option>
+          @for (rango_precio of rango_precios; track rango_precio.pk_rango) {
+          <option value="{{rango_precio.pk_rango}}">{{rango_precio.rango | number : "1.0-0"}}</option>
+          }
         </select>
       </div>
       @if (isValidField('fk_rango_precio')) {
@@ -50,6 +56,8 @@
       <div class="select-container">
         <select formControlName="fk_ubicacion" class="custom-select" name="" id="ubicacion">
           <option value="">Seleccione</option>
+          <option value="1">Manizales Caldas</option>
+          <option value="2">Ciénaga Magdalena</option>
         </select>
       </div>
       @if (isValidField('fk_ubicacion')) {

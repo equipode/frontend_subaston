@@ -3,9 +3,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { tokenJwt } from '../../../auth/interfaces/jsonTokenJwt.interface';
 import { AuthService } from '../../../auth/services/auth.service';
 import { ValidatorsService } from '../../../services/validators.service';
+import { Categoria, InfoCategoria } from '../../interfaces/categoria.interface';
 import { CreateProducto } from '../../interfaces/producto.interface';
+import { InfoRangoPrecio, RangoPrecio } from '../../interfaces/rango_precio.interface';
 import { convertirFecha } from '../../pipes/convertirFecha';
 import { getCurrentTimeInFormat } from '../../pipes/obtenerHoraActual';
+import { CategoriaService } from '../../services/categoria.service';
+import { RangoPrecioService } from '../../services/rango_precio.service';
 
 @Component({
   selector: 'app-form-crear-producto',
@@ -17,12 +21,17 @@ export class FormCrearProductoComponent implements OnInit {
   @Output() onFormProduct: EventEmitter<CreateProducto> = new EventEmitter<CreateProducto>();
 
   private authService = inject(AuthService);
+  private categoriaService = inject(CategoriaService);
+  private rangoPrecioService = inject(RangoPrecioService);
   private fb = inject(FormBuilder);
   private valitarorsService = inject(ValidatorsService);
 
   public dateMax: string = '';
   public horaActual: string = '';
   public token: tokenJwt = this.authService.getToken;
+
+  public categorias: Categoria[] = [];
+  public rango_precios: RangoPrecio[] = [];
 
   public myFormProduct: FormGroup = this.fb.group({
     nombre_product: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(48)]],
@@ -50,6 +59,12 @@ export class FormCrearProductoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.datosPalFormulario();
+    this.listadoCategorias();
+    this.listadoRangoPrecios();
+  }
+
+  datosPalFormulario() {
     let fechaActual = new Date().toLocaleDateString('es-CO', { timeZone: 'America/Bogota' });
     const fecha = convertirFecha(fechaActual);
     this.dateMax = fecha;
@@ -57,6 +72,30 @@ export class FormCrearProductoComponent implements OnInit {
     this.myFormProduct.controls['fecha_subasta'].setValue(fecha);
     this.myFormProduct.controls['hora_subasta'].setValue(this.horaActual);
     this.myFormProduct.controls['fk_user'].setValue(this.token.user.id);
+  }
+
+  listadoCategorias() {
+    this.categorias = [];
+    this.categoriaService.listCategorias().subscribe({
+      next: (infoCategor: InfoCategoria) => {
+        this.categorias = infoCategor.message;
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+  }
+
+  listadoRangoPrecios() {
+    this.rango_precios = [];
+    this.rangoPrecioService.listRangoPrecios().subscribe({
+      next: (infoRango: InfoRangoPrecio) => {
+        this.rango_precios = infoRango.message;
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
   }
 
   onSubmit() {

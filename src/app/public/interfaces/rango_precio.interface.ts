@@ -1,6 +1,6 @@
 export interface InfoRangoPrecio {
   status: string;
-  message: RangoPrecio;
+  message: RangoPrecio[];
 }
 
 export interface RangoPrecio {

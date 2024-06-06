@@ -1,6 +1,6 @@
 export interface InfoCategoria {
   status: string;
-  message: Categoria;
+  message: Categoria[];
 }
 
 export interface Categoria {

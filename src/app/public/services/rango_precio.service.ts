@@ -13,7 +13,7 @@ export class RangoPrecioService {
 
   private http = inject(HttpClient);
 
-  listCategorias(): Observable<InfoRangoPrecio> {
+  listRangoPrecios(): Observable<InfoRangoPrecio> {
     return this.http.get<InfoRangoPrecio>(`${this.baseUrl}/api/v1/rango_precio`);
   }
 
