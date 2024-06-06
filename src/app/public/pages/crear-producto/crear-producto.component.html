@@ -4,5 +4,6 @@
 </p-card>
 <br>
 <p-card header="Productos">
-  <app-list-productos-por-usuario [productos]="productos"></app-list-productos-por-usuario>
+  <app-list-productos-por-usuario [productos]="productos"
+    (onListProducts)="listProductos()"></app-list-productos-por-usuario>
 </p-card>

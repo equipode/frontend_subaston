@@ -25,7 +25,8 @@
         {{ producto.fecha_subasta | countdown:producto.hora_subasta }}
       </td>
       <td><p-button icon="pi pi-pencil"></p-button></td>
-      <td><p-button styleClass="p-button-danger" icon="pi pi-trash"></p-button></td>
+      <td><p-button (onClick)="eliminarProducto(producto.pk_prod, producto.nombre_product)" styleClass="p-button-danger"
+          icon="pi pi-trash"></p-button></td>
     </tr>
 
   </ng-template>

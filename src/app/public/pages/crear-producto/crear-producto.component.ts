@@ -54,6 +54,7 @@ export class CrearProductoComponent implements OnInit, OnDestroy {
           showConfirmButton: false,
           timer: 1000
         });
+        this.listProductos();
       },
       error: (err) => {
         if (err.status === 400) {
