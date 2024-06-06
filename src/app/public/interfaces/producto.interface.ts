@@ -13,6 +13,31 @@ export interface Producto {
   nit: string;
 }
 
+export interface InfoProductoPorUsuario {
+  status: string;
+  message: ProductoPorUsuario[];
+}
+
+export interface ProductoPorUsuario {
+  pk_prod: number;
+  nombre_product: string;
+  precio_base: number;
+  antiguedad: string;
+  imagen: string;
+  descripcion: string;
+  cantidad: number;
+  estado_mostrador: number;
+  fecha_subasta: Date;
+  hora_subasta: string;
+  fk_categoria: number;
+  fk_rango_precio: number;
+  fk_user: number;
+  fk_ubicacion: number;
+  createAt: Date;
+  updateAt: Date;
+}
+
+
 export interface CreateProducto {
   nombre_product: string,
   precio_base: number,
@@ -35,3 +60,7 @@ export interface ResponseCreateProduct {
   data: any;
 }
 
+export interface ResponseProductoEliminado {
+  status: string;
+  message: string;
+}
