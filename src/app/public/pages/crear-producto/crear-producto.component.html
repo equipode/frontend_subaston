@@ -2,3 +2,7 @@
 <p-card header="Producto A Subastar">
   <app-form-crear-producto (onFormProduct)="crearProducto($event)"></app-form-crear-producto>
 </p-card>
+<br>
+<p-card header="Productos">
+  <app-list-productos-por-usuario [productos]="productos"></app-list-productos-por-usuario>
+</p-card>

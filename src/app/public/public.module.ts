@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PrimengModule } from '../primeng/primeng.module';
 import { FormCrearProductoComponent } from './components/form-crear-producto/form-crear-producto.component';
+import { ListProductosPorUsuarioComponent } from './components/list-productos-por-usuario/list-productos-por-usuario.component';
 import { SubastasEnEsperaComponent } from './components/subastas-en-espera/subastas-en-espera.component';
 import { SubastasEnLineaComponent } from './components/subastas-en-linea/subastas-en-linea.component';
 import { CrearProductoComponent } from './pages/crear-producto/crear-producto.component';
@@ -21,7 +22,8 @@ import { PublicRoutingModule } from './public-routing.module';
     SubastasEnEsperaComponent,
     SubastasEnLineaComponent,
     CrearProductoComponent,
-    FormCrearProductoComponent
+    FormCrearProductoComponent,
+    ListProductosPorUsuarioComponent
   ],
   imports: [
     CommonModule,
