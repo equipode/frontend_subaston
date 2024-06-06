@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CreateProducto } from '../../interfaces/producto.interface';
 
 @Component({
   selector: 'app-crear-producto',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './crear-producto.component.css'
 })
 export class CrearProductoComponent {
+
+  crearProducto(producto: CreateProducto) {
+    console.log(producto);
+  }
 
 }

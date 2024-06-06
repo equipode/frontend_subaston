@@ -13,3 +13,19 @@ export interface Producto {
   nit: string;
 }
 
+export interface CreateProducto {
+  nombre_product: string,
+  precio_base: number,
+  antiguedad: string,
+  imagen: string,
+  descripcion: string,
+  cantidad: number,
+  estado_mostrador: number,
+  fecha_subasta: string,
+  hora_subasta: string,
+  fk_categoria: number,
+  fk_rango_precio: number,
+  fk_user: number,
+  fk_ubicacion: number
+}
+

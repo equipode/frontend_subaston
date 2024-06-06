@@ -1,0 +1,59 @@
+.select-container {
+  display: flex;
+  justify-content: left;
+  position: relative;
+  min-width: 250px;
+  height: 40px;
+}
+
+.custom-select {
+  border: 2px solid #050000;
+  /* appearance: none; */
+  padding: 0 30px 0 15px;
+  width: 70%;
+  /* color: #1f2d40; */
+  background-color: #1f2d40;
+  font-size: 20px;
+}
+
+.styleHora {
+  /* Cambiar el color del texto */
+  color: #ffffff;
+
+  /* Cambiar el color de fondo */
+  background-color: #1c1c1c7a;
+
+  /* Agregar un relleno interno (espacio dentro del campo) */
+  padding: 8px;
+
+  /* Establecer un borde */
+  /* border: 1px solid #ccc; */
+
+  /* Redondear las esquinas */
+  border-radius: 5px;
+
+  /* Cambiar el estilo del cursor cuando está sobre el campo */
+  cursor: pointer;
+
+  /* Cambiar el estilo del cursor cuando se está editando el campo */
+  caret-color: blue;
+
+  font-size: 18px;
+}
+
+/* Estilos para el input de calendario personalizado */
+.custom-datepicker {
+  border: 2px solid #050000;
+  /* Color del borde */
+  border-radius: 4px;
+  /* Bordes redondeados */
+  padding: 5px;
+  /* Espacio interno */
+  font-size: 20px;
+  /* Tamaño de fuente */
+  color: #ffffff;
+  /* Color del texto */
+  background-color: #1f2d40;
+  /* Color de fondo */
+  /* Otros estilos personalizados */
+}

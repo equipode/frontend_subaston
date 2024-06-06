@@ -1,0 +1,120 @@
+<form [formGroup]="myFormProduct">
+  <div class="grid">
+    <div class="col-6 md:col-6 lg:col-4">
+      <label for="nomb_product" class="block text-900 font-medium mb-2">Nombre</label>
+      <input id="nomb_product" type="text" formControlName="nombre_product" class="p-inputtext custom-input"><br>
+      @if (isValidField('nombre_product')) {
+      <b style="color: red;">{{ getFieldError('nombre_product') }}</b>
+      }
+    </div>
+    <div class="col-6 md:col-6 lg:col-4">
+      <label for="precio_base" class="block text-900 font-medium mb-2">Precio Base</label>
+      <input id="precio_base" formControlName="precio_base" type="number" class="p-inputtext custom-input"><br>
+      @if (isValidField('precio_base')) {
+      <b style="color: red;">{{ getFieldError('precio_base') }}</b>
+      }
+    </div>
+    <div class="col-6 md:col-6 lg:col-4">
+      <label for="cantida" class="block text-900 font-medium mb-2">Cantidad</label>
+      <input id="cantida" type="number" formControlName="cantidad" class="p-inputtext custom-input"><br>
+      @if (isValidField('cantidad')) {
+      <b style="color: red;">{{ getFieldError('cantidad') }}</b>
+      }
+    </div>
+  </div>
+  <div class="grid">
+    <div class="col-6 md:col-6 lg:col-4">
+      <label for="categor" class="block text-900 font-medium mb-2">Categoria</label>
+      <div class="select-container">
+        <select formControlName="fk_categoria" class="custom-select" name="" id="categor">
+          <option value="">Seleccione</option>
+        </select>
+      </div>
+      @if (isValidField('fk_categoria')) {
+      <b style="color: red;">{{ getFieldError('fk_categoria') }}</b>
+      }
+    </div>
+    <div class="col-6 md:col-6 lg:col-4">
+      <label for="rango_prec" class="block text-900 font-medium mb-2">Rango Precio</label>
+      <div class="select-container">
+        <select formControlName="fk_rango_precio" class="custom-select" name="" id="rango_prec">
+          <option value="">Seleccione</option>
+        </select>
+      </div>
+      @if (isValidField('fk_rango_precio')) {
+      <b style="color: red;">{{ getFieldError('fk_rango_precio') }}</b>
+      }
+    </div>
+    <div class="col-6 md:col-6 lg:col-4">
+      <label for="ubicacion" class="block text-900 font-medium mb-2">Ubicación</label>
+      <div class="select-container">
+        <select formControlName="fk_ubicacion" class="custom-select" name="" id="ubicacion">
+          <option value="">Seleccione</option>
+        </select>
+      </div>
+      @if (isValidField('fk_ubicacion')) {
+      <b style="color: red;">{{ getFieldError('fk_ubicacion') }}</b>
+      }
+    </div>
+  </div>
+  <div class="grid">
+    <div class="col-6 md:col-6 lg:col-4">
+      <label for="fecha" class="block text-900 font-medium mb-2">Fecha</label>
+      <input type="date" name="" id="fecha" min="{{dateMax}}" formControlName="fecha_subasta"
+        class="custom-datepicker"><br>
+      @if (isValidField('fecha_subasta')) {
+      <b style="color: red;">{{ getFieldError('fecha_subasta') }}</b>
+      }
+    </div>
+    <div class="col-6 md:col-6 lg:col-4">
+      <label for="hora" class="block text-900 font-medium mb-2">Hora</label>
+      <input type="time" id="hora" formControlName="hora_subasta" class="styleHora"><br>
+      @if (isValidField('hora_subasta')) {
+      <b style="color: red;">{{ getFieldError('hora_subasta') }}</b>
+      }
+    </div>
+    <div class="col-6 md:col-6 lg:col-4">
+      <label for="estado" class="block text-900 font-medium mb-2">Estado</label>
+      <div class="select-container">
+        <select formControlName="estado_mostrador" class="custom-select" name="" id="estado">
+          <option value="">Seleccione</option>
+          <option value="1">Activo</option>
+          <option value="0">Inactivo</option>
+        </select>
+      </div>
+      @if (isValidField('estado_mostrador')) {
+      <b style="color: red;">{{ getFieldError('estado_mostrador') }}</b>
+      }
+    </div>
+  </div>
+  <div class="grid">
+    <div class="col-6 md:col-6 lg:col-4">
+      <label for="antigue" class="block text-900 font-medium mb-2">Antiguedad</label>
+      <textarea rows="3" cols="30" id="antigue" formControlName="antiguedad" pInputTextarea></textarea><br>
+      @if (isValidField('antiguedad')) {
+      <b style="color: red;">{{ getFieldError('antiguedad') }}</b>
+      }
+    </div>
+    <div class="col-6 md:col-6 lg:col-4">
+      <label for="descrip" class="block text-900 font-medium mb-2">Descripción</label>
+      <textarea rows="3" cols="30" id="descrip" formControlName="descripcion" pInputTextarea></textarea><br>
+      @if (isValidField('descripcion')) {
+      <b style="color: red;">{{ getFieldError('descripcion') }}</b>
+      }
+    </div>
+    <div class="col-6 md:col-6 lg:col-4">
+
+    </div>
+  </div>
+  <div class="grid">
+    <div class="col-6 md:col-6 lg:col-4">
+      <p-button label="Crear Ubicación"></p-button>
+    </div>
+    <div class="col-6 md:col-6 lg:col-4">
+      <p-button (onClick)="onSubmit()" label="Guardar"></p-button>
+    </div>
+    <div class="col-6 md:col-6 lg:col-4">
+
+    </div>
+  </div>
+</form>
